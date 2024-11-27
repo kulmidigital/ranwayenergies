@@ -126,7 +126,7 @@ const services = [
 const contactInfo = [
   {
     icon: Phone,
-    label: '+234 123 456 7890'
+    label: '+254 723 105 805'
   },
   {
     icon: Mail,
@@ -134,6 +134,6 @@ const contactInfo = [
   },
   {
     icon: MapPin,
-    label: '123 Example Street, City, State'
+    label: 'Lenana 197 Place Building, 5th Floor, Lenana Road'
   }
 ]; 
