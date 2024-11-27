@@ -2,26 +2,174 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+/* Base theme variables */
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --navy-blue: 30, 58, 138;
+    --gold: 251, 191, 36;
+    --white: 255, 255, 255;
+    
+    /* Keep other existing root variables */
+    
+    --background: 0 0% 100%;
+    
+    --foreground: 0 0% 3.9%;
+    
+    --card: 0 0% 100%;
+    
+    --card-foreground: 0 0% 3.9%;
+    
+    --popover: 0 0% 100%;
+    
+    --popover-foreground: 0 0% 3.9%;
+    
+    --primary: 0 0% 9%;
+    
+    --primary-foreground: 0 0% 98%;
+    
+    --secondary: 0 0% 96.1%;
+    
+    --secondary-foreground: 0 0% 9%;
+    
+    --muted: 0 0% 96.1%;
+    
+    --muted-foreground: 0 0% 45.1%;
+    
+    --accent: 0 0% 96.1%;
+    
+    --accent-foreground: 0 0% 9%;
+    
+    --destructive: 0 84.2% 60.2%;
+    
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 0 0% 89.8%;
+    
+    --input: 0 0% 89.8%;
+    
+    --ring: 0 0% 3.9%;
+    
+    --chart-1: 12 76% 61%;
+    
+    --chart-2: 173 58% 39%;
+    
+    --chart-3: 197 37% 24%;
+    
+    --chart-4: 43 74% 66%;
+    
+    --chart-5: 27 87% 67%;
+    
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom utility classes */
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      rgba(var(--navy-blue), 0.15),
+      rgba(var(--white), 0.9) 50%,
+      rgba(var(--gold), 0.15)
+    );
+  }
+
+  .glass-effect {
+    background: rgba(var(--white), 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(var(--white), 0.6);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .countdown-item {
+    background: rgba(var(--white), 0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(var(--white), 0.7);
+    transition: transform 0.2s ease;
+  }
+
+  .countdown-item:hover {
+    transform: translateY(-2px);
+  }
+
+  .blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    filter: blur(40px);
+    opacity: 0.3;
+    z-index: 0;
+    animation: blob-animation 25s infinite ease-in-out;
+  }
+
+  .blob-1 {
+    background: rgba(var(--navy-blue), 0.2);
+    top: -15%;
+    right: -15%;
+  }
+
+  .blob-2 {
+    background: rgba(var(--gold), 0.2);
+    bottom: -15%;
+    left: -15%;
+    animation-delay: -5s;
+  }
+}
+
+/* Animations */
+@keyframes blob-animation {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(2%, 2%) scale(1.1) rotate(120deg);
+  }
+  66% {
+    transform: translate(-2%, -2%) scale(0.9) rotate(240deg);
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(360deg);
+  }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .text-gradient {
+    background: linear-gradient(to right, #f59e0b, #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
