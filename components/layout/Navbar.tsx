@@ -37,9 +37,9 @@ export function Navbar() {
         isScrolled || !isHomePage ? "bg-white shadow-md py-2" : "bg-transparent py-4"
       }`}
     >
-      <div className="container mx-auto px-3 md:px-4">
+      <div className="container mx-auto pl-0 pr-4 md:px-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="relative w-28 md:w-32 h-14 md:h-16">
+          <Link href="/" className="relative -mt-2 md:-mt-0 -ml-6 md:ml-0 w-40 md:w-32 h-16 md:h-16">
             <Image
               src="/logo.png"
               alt="Ranway Energies Limited"
@@ -72,9 +72,9 @@ export function Navbar() {
             <SheetTrigger asChild>
               <Button 
                 variant="ghost" 
-                className="md:hidden p-0 hover:bg-transparent"
+                className="md:hidden p-4 hover:bg-transparent scale-125"
               >
-                <Menu className={`h-6 w-6 ${
+                <Menu className={`h-12 w-12 ${
                   isScrolled || !isHomePage ? "text-gray-800" : "text-white"
                 }`} />
               </Button>
