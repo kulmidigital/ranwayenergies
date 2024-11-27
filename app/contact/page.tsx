@@ -138,23 +138,23 @@ export default function ContactPage() {
 
 const contactInfo = [
   {
-    icon: <Phone className="h-6 w-6 text-amber-500" />,
+    icon: <Phone className='h-6 w-6 text-amber-500' />,
     title: "Phone",
-    details: "+234 123 456 7890"
+    details: "+254 723 105 805",
   },
   {
-    icon: <Mail className="h-6 w-6 text-amber-500" />,
+    icon: <Mail className='h-6 w-6 text-amber-500' />,
     title: "Email",
-    details: "info@ranwayenergies.com"
+    details: "info@ranwayenergies.com",
   },
   {
-    icon: <MapPin className="h-6 w-6 text-amber-500" />,
+    icon: <MapPin className='h-6 w-6 text-amber-500' />,
     title: "Location",
-    details: "123 Example Street, City, State"
+    details: "Lenana 197 Place Building, 5th Floor, Lenana Road",
   },
   {
-    icon: <Clock className="h-6 w-6 text-amber-500" />,
+    icon: <Clock className='h-6 w-6 text-amber-500' />,
     title: "Working Hours",
-    details: "24/7 - Always Open"
-  }
+    details: "24/7 - Always Open",
+  },
 ]; 
