@@ -80,9 +80,20 @@ export function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-4 md:py-6">
-          <div className="flex justify-center">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4">
             <p className="text-xs md:text-sm text-gray-300 text-center">
               © {new Date().getFullYear()} Ranway Energies Limited. All rights reserved.
+            </p>
+            <p className="text-xs md:text-sm text-gray-300 text-center">
+              Designed and Developed by{" "}
+              <a 
+                href="https://kulmi.digital/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-500 hover:text-amber-400 transition-colors"
+              >
+                Kulmi Digital
+              </a>
             </p>
           </div>
         </div>
