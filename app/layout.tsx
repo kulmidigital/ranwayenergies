@@ -13,12 +13,12 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://ranwayenergies.com'),
   title: {
-    default: "Ranway Energies Limited - Premium Fuel Station in Nigeria",
+    default: "Ranway Energies Limited - Premium Fuel Station in Kenya",
     template: "%s | Ranway Energies Limited"
   },
   description: "Ranway Energies Limited offers premium quality fuel, exceptional service, and modern convenience store. Experience reliable energy solutions and superior customer service.",
   keywords: [
-    "fuel station Nigeria",
+    "fuel station Kenya",
     "premium fuel",
     "diesel supplier",
     "petrol station",
