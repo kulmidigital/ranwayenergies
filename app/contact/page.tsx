@@ -14,7 +14,7 @@ export default function ContactPage() {
       <section className="relative h-[40vh] bg-blue-900">
         <div className="absolute inset-0">
           <Image
-            src="/contact-hero.webp"
+            src="/photos_batch_2/ranway28.webp"
             alt="Contact Us"
             fill
             className="object-cover opacity-30"

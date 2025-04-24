@@ -13,7 +13,7 @@ export function HeroSection() {
         animate={{ scale: 1 }}
         transition={{ duration: 2 }}>
         <Image
-          src='/station-front.webp'
+          src='/photos_batch_2/ranway1.webp'
           alt='Modern Petrol Station'
           fill
           className='object-cover brightness-[0.25]'

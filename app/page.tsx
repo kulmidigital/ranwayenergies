@@ -6,7 +6,6 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { FeatureCard } from "@/components/cards/FeatureCard";
 import { ProductCard } from "@/components/cards/ProductCard";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 export default function HomePage() {
   const [isScrolled, setIsScrolled] = useState(false);
