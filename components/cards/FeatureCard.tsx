@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FeatureCardProps } from "@/app/types";
 
-export function FeatureCard({ icon, title, description }: FeatureCardProps) {
+export function FeatureCard({ icon, title, description }: Readonly<FeatureCardProps>) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
