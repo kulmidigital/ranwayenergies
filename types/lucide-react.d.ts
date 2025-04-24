@@ -9,6 +9,9 @@ declare module "lucide-react" {
   type Icon = ComponentType<IconProps>;
 
   export const ChevronRight: Icon;
+  export const ChevronLeft: Icon;
+  export const ChevronDown: Icon;
+  export const ChevronUp: Icon;
   export const MapPin: Icon;
   export const ArrowDown: Icon;
   export const ArrowUp: Icon;
@@ -36,4 +39,6 @@ declare module "lucide-react" {
   export const Instagram: Icon;
   export const Menu: Icon;
   export const Check: Icon;
+  export const X: Icon;
+
 }
