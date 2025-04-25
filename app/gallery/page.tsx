@@ -10,11 +10,12 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   return (
     <main className='container mx-auto px-4 py-8'>
-      <div className='space-y-4 mb-8'>
-        <h1 className='text-4xl font-bold text-center'>Our Gallery</h1>
+      <div className='space-y-4 mt-12 lg:mt-16 mb-8'>
+        <h1 className='text-4xl font-bold text-center text-amber-500'>
+          Our Gallery
+        </h1>
         <p className='text-center text-muted-foreground max-w-2xl mx-auto'>
-          Take a visual journey through our facilities and services. Each image
-          tells a story of our commitment to excellence.
+          Take a visual journey through our facilities.
         </p>
       </div>
       <GalleryGrid />

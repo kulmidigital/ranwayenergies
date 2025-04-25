@@ -4,271 +4,337 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 // Default placeholder and fallback image
 const PLACEHOLDER_IMAGE = "/logo.png"; // Using an existing image as placeholder
 const FALLBACK_IMAGE = "/photos_batch_2/ranway1.webp"; // Using an existing image as fallback
 
-// Define the gallery images with sequential alt numbering
+// Define locations
+const LOCATIONS = {
+  CHANGAMWE: "Changamwe, Mombasa",
+  NGOMBENI: "Ngombeni, Kwale",
+};
+
+// Define the gallery images with sequential alt numbering and location info
 const galleryImages = [
-  // Original images from batch 1 first with alt 1-13
+  // Original images from batch 1 first with alt 1-13 (Changamwe, Mombasa)
   {
     src: "/ranw.webp",
-    alt: "Ranway Gallery Image 1",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw1.webp",
-    alt: "Ranway Gallery Image 2",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw2.webp",
-    alt: "Ranway Gallery Image 3",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw3.webp",
-    alt: "Ranway Gallery Image 4",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw4.webp",
-    alt: "Ranway Gallery Image 5",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw5.webp",
-    alt: "Ranway Gallery Image 6",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw6.webp",
-    alt: "Ranway Gallery Image 7",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw7.webp",
-    alt: "Ranway Gallery Image 8",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw8.webp",
-    alt: "Ranway Gallery Image 9",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw9.webp",
-    alt: "Ranway Gallery Image 10",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw10.webp",
-    alt: "Ranway Gallery Image 11",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw11.webp",
-    alt: "Ranway Gallery Image 12",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
   {
     src: "/ranw12.webp",
-    alt: "Ranway Gallery Image 13",
+    alt: "Ranway Changamwe Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.CHANGAMWE,
   },
-  // Then batch 2 images with sequential alts starting from 14
+  // Then batch 2 images with sequential alts starting from 14 (Ngombeni, Kwale)
   {
     src: "/photos_batch_2/ranway1.webp",
-    alt: "Ranway Gallery Image 14",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway2.webp",
-    alt: "Ranway Gallery Image 15",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway3.webp",
-    alt: "Ranway Gallery Image 16",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway4.webp",
-    alt: "Ranway Gallery Image 17",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway5.webp",
-    alt: "Ranway Gallery Image 18",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway6.webp",
-    alt: "Ranway Gallery Image 19",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway7.webp",
-    alt: "Ranway Gallery Image 20",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway8.webp",
-    alt: "Ranway Gallery Image 21",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway9.webp",
-    alt: "Ranway Gallery Image 22",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway10.webp",
-    alt: "Ranway Gallery Image 23",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway11.webp",
-    alt: "Ranway Gallery Image 24",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway12.webp",
-    alt: "Ranway Gallery Image 25",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway13.webp",
-    alt: "Ranway Gallery Image 26",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway14.webp",
-    alt: "Ranway Gallery Image 27",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway15.webp",
-    alt: "Ranway Gallery Image 28",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway16.webp",
-    alt: "Ranway Gallery Image 29",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway17.webp",
-    alt: "Ranway Gallery Image 30",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway18.webp",
-    alt: "Ranway Gallery Image 31",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway19.webp",
-    alt: "Ranway Gallery Image 32",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway20.webp",
-    alt: "Ranway Gallery Image 33",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway21.webp",
-    alt: "Ranway Gallery Image 34",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway22.webp",
-    alt: "Ranway Gallery Image 35",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway23.webp",
-    alt: "Ranway Gallery Image 36",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway24.webp",
-    alt: "Ranway Gallery Image 37",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway25.webp",
-    alt: "Ranway Gallery Image 38",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway26.webp",
-    alt: "Ranway Gallery Image 39",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway27.webp",
-    alt: "Ranway Gallery Image 40",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway28.webp",
-    alt: "Ranway Gallery Image 41",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway29.webp",
-    alt: "Ranway Gallery Image 42",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway30.webp",
-    alt: "Ranway Gallery Image 43",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway31.webp",
-    alt: "Ranway Gallery Image 44",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway32.webp",
-    alt: "Ranway Gallery Image 45",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway33.webp",
-    alt: "Ranway Gallery Image 46",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway34.webp",
-    alt: "Ranway Gallery Image 47",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway35.webp",
-    alt: "Ranway Gallery Image 48",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway36.webp",
-    alt: "Ranway Gallery Image 49",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway37.webp",
-    alt: "Ranway Gallery Image 50",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
   {
     src: "/photos_batch_2/ranway38.webp",
-    alt: "Ranway Gallery Image 51",
+    alt: "Ranway Ngombeni Station",
     fallbackSrc: FALLBACK_IMAGE,
+    location: LOCATIONS.NGOMBENI,
   },
 ];
+
+// Group images by location
+const changamweImages = galleryImages.filter(
+  (img) => img.location === LOCATIONS.CHANGAMWE
+);
+const ngombeniImages = galleryImages.filter(
+  (img) => img.location === LOCATIONS.NGOMBENI
+);
 
 export default function GalleryGrid() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -289,18 +355,58 @@ export default function GalleryGrid() {
 
   return (
     <>
-      <div className='columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4'>
-        {galleryImages.map((image, index) => (
-          <NextImageWithFallback
-            key={image.src}
-            src={image.src}
-            fallbackSrc={image.fallbackSrc}
-            alt={image.alt}
-            index={index}
-            onClick={() => setSelectedImage(image.src)}
-            isPriority={index < 8} // Prioritize first 8 images above the fold
-          />
-        ))}
+      {/* Changamwe Section */}
+      <div className='mb-12'>
+        <h2 className='text-2xl font-bold text-center mb-6 text-blue-900'>
+          {LOCATIONS.CHANGAMWE}
+        </h2>
+        <div className='columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4'>
+          {changamweImages.map((image, index) => (
+            <NextImageWithFallback
+              key={image.src}
+              src={image.src}
+              fallbackSrc={image.fallbackSrc}
+              alt={image.alt}
+              index={index}
+              onClick={() => setSelectedImage(image.src)}
+              isPriority={index < 4} // Prioritize first few images
+              location={image.location}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Divider */}
+      <div className='my-12 relative'>
+        <div className='absolute inset-0 flex items-center'>
+          <div className='border-t border-gray-300 w-full'></div>
+        </div>
+        <div className='relative flex justify-center'>
+          <span className='bg-white px-6 text-gray-500 text-sm'>
+            Our Stations
+          </span>
+        </div>
+      </div>
+
+      {/* Ngombeni Section */}
+      <div className='mb-12'>
+        <h2 className='text-2xl font-bold text-center mb-6 text-blue-900'>
+          {LOCATIONS.NGOMBENI}
+        </h2>
+        <div className='columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4'>
+          {ngombeniImages.map((image, index) => (
+            <NextImageWithFallback
+              key={image.src}
+              src={image.src}
+              fallbackSrc={image.fallbackSrc}
+              alt={image.alt}
+              index={index}
+              onClick={() => setSelectedImage(image.src)}
+              isPriority={false}
+              location={image.location}
+            />
+          ))}
+        </div>
       </div>
 
       <Dialog
@@ -321,6 +427,10 @@ export default function GalleryGrid() {
                 className='max-w-full max-h-[90vh] object-contain'
                 isPriority={true}
                 showLoadingSpinner={true}
+                location={
+                  galleryImages.find((img) => img.src === selectedImage)
+                    ?.location
+                }
               />
             </div>
           )}
@@ -339,6 +449,7 @@ function NextImageWithFallback({
   onClick,
   isPriority = false,
   showLoadingSpinner = false,
+  location,
   ...rest
 }: {
   src: string;
@@ -348,6 +459,7 @@ function NextImageWithFallback({
   onClick?: () => void;
   isPriority?: boolean;
   showLoadingSpinner?: boolean;
+  location?: string;
   width?: number;
   height?: number;
   className?: string;
@@ -419,6 +531,13 @@ function NextImageWithFallback({
             />
             {onClick && (
               <div className='absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300' />
+            )}
+
+            {/* Location badge */}
+            {location && onClick && !loading && (
+              <div className='absolute bottom-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded'>
+                {location}
+              </div>
             )}
           </>
         )}

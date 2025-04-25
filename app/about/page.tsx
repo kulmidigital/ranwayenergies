@@ -11,7 +11,7 @@ export default function AboutPage() {
       <section className='relative h-[40vh] md:h-[60vh] bg-blue-900'>
         <div className='absolute inset-0'>
           <Image
-            src='/about-hero.webp'
+            src='/photos_batch_2/ranway25.webp'
             alt='About Ranway'
             fill
             className='object-cover opacity-30'
@@ -52,7 +52,7 @@ export default function AboutPage() {
               transition={{ duration: 0.8 }}>
               <div className='relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden'>
                 <Image
-                  src='/station-side.webp'
+                  src='/photos_batch_2/ranway30.webp'
                   alt='Our Station'
                   fill
                   className='object-cover'

@@ -121,7 +121,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               <ProductCard
-                image="/fuel-diesel.webp"
+                image="/photos_batch_2/ranway5.webp"
                 title="Premium Diesel"
                 description="High-performance diesel fuel engineered for maximum efficiency and engine protection."
                 features={["Enhanced Engine Performance", "Lower Emissions", "Better Mileage"]}
@@ -135,7 +135,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.2 }}
             >
               <ProductCard
-                image="/fuel-petrol.webp"
+                image="/photos_batch_2/ranway17.webp"
                 title="Unleaded Petrol"
                 description="Clean-burning petrol that delivers smooth acceleration and reliable performance."
                 features={["High Octane Rating", "Clean Engine", "Smooth Performance"]}
@@ -149,7 +149,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <ProductCard
-                image="/fuel-kerosene.webp"
+                image="/photos_batch_2/ranway38.webp"
                 title="Kerosene"
                 description="Pure, efficient kerosene fuel perfect for domestic and industrial applications."
                 features={["High Purity", "Clean Burning", "Multiple Uses"]}
@@ -163,7 +163,7 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               <ProductCard
-                image="/lubricants.webp"
+                image="/photos_batch_2/ranway8.webp"
                 title="Lubricants"
                 description="Premium quality lubricants that provide superior protection for all types of engines."
                 features={["Extended Protection", "Thermal Stability", "Wear Reduction"]}

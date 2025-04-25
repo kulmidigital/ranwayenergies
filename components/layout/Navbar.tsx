@@ -71,9 +71,16 @@ export function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Button className='bg-amber-500 hover:bg-amber-600'>
-              Find Station
-            </Button>
+            <Link
+              href='https://maps.app.goo.gl/CnBzSDc2pgosV6Lu6?g_st=com.google.maps.preview.copy'
+              target='_blank'
+              rel='noopener noreferrer'>
+              <Button
+                size='lg'
+                className='bg-amber-500 hover:bg-amber-600 text-white px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base'>
+                Find Station
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Navigation */}
@@ -103,9 +110,16 @@ export function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <Button className='w-full bg-amber-500 hover:bg-amber-600 mt-4'>
-                  Find Station
-                </Button>
+                <Link
+                  href='https://maps.app.goo.gl/CnBzSDc2pgosV6Lu6?g_st=com.google.maps.preview.copy'
+                  target='_blank'
+                  rel='noopener noreferrer'>
+                  <Button
+                    size='lg'
+                    className='bg-amber-500 hover:bg-amber-600 text-white px-6 md:px-8 py-2.5 md:py-3 text-sm md:text-base'>
+                    Find Station
+                  </Button>
+                </Link>
               </div>
             </SheetContent>
           </Sheet>

@@ -50,15 +50,20 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className='flex flex-col sm:flex-row gap-4 md:gap-6'>
-              <Button
-                size='lg'
+              <Link
+                href='https://maps.app.goo.gl/CnBzSDc2pgosV6Lu6?g_st=com.google.maps.preview.copy'
+                target='_blank'
+                rel='noopener noreferrer'>
+                <Button
+                  size='lg'
                 className='group relative overflow-hidden bg-amber-500 hover:bg-amber-500 px-6 md:px-8 py-3 md:py-4 text-sm md:text-base transition-all duration-300'>
                 <span className='relative z-10 flex items-center gap-2'>
                   Find Station{" "}
                   <MapPin className='ml-2 h-4 w-4 transition-transform group-hover:rotate-12' />
                 </span>
-                <div className='absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-400 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0' />
-              </Button>
+                  <div className='absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-400 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0' />
+                </Button>
+              </Link>
 
               <Link href='/services' className="w-full sm:w-auto">
                 <Button
